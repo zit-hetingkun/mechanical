@@ -1,0 +1,160 @@
+<view class='ticket-container'>
+	<!--内容布局-->
+	<view class="entirety">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<!-- 搜索框 -->
+				<picker class="user-picker" bindchange="bindPickerChange2" value="{{securityCompany[index].id}}" range="{{securityCompany}}" data-selecthx="{{securityCompany[index].company}}" range-key="{{'company'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{securityCompany[index].company}}" placeholder="请选择" />
+						<image src="/image/icon/del.png" class='cancle_btn' wx:if="{{securityCompany[index].company}}" bindtap='clean'></image>
+					</view>
+				</picker>
+			</view>
+			<!-- 搜索按钮,调用搜索查询方法 -->
+			<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+		</view>
+	</view>
+	<!--基本信息列表展示 -->
+	<view class="container-plan">
+		<view wx:if="{{listContent!=null}}"> 
+			{{listContent}}
+		</view>
+		<view wx:for="{{persons}}" wx:for-item="person">
+			<view class="container-type">
+				<view class="table-container" bind:tap="checkSchedule" data-personid="{{person.id}}">
+					<!--分公司-->
+					<view class="table-detail">
+						<text>分公司：{{person.operatingBranchName}}</text>
+					</view>
+					<!--安保公司-->
+					<view class="table-detail">
+						<text>安保公司： {{person.securityCompanyName}}</text>
+					</view>
+					<!--线别-->
+					<view class="table-detail">
+						<text>线别：{{person.lineName}}</text>
+					</view>
+					<view class="table-count">
+						<text>站区/中心：{{person.stationAreaName}}</text>
+					</view>
+					<view class="table-count">
+						<text>车站 ： {{person.stationName}}</text>
+					</view>
+					<view class="table-count">
+						<text>姓名 ： {{person.name}}</text>
+					</view>
+				</view>
+				<view class="title-bottom">
+					<!--新增的提交-->
+					<view class="plan-btn" wx:if="{{(roleId==7&&person.subwayPlanList[0].groupPlanStatus==1&&person.subwayPlanList[0].flag=='1')||roleId==7&&person.subwayPlanList[0].groupPlanStatus==8&&person.subwayPlanList[0].flag=='1'}}">
+						<text class="planbtn-text" bindtap='addSubmit' data-personid="{{person.id}}">提交</text>
+					</view>
+					<!--删除的提交-->
+					<!-- <view class="plan-btn" wx:if="{{roleId==7&&person.securityPlanStatus==1||roleId==7&&person.securityPlanStatus==8}}">
+            <text class="planbtn-text" bindtap='deleteSubmit' data-personid="{{person.id}}">提交</text>
+          </view> -->
+					<!--编辑的提交-->
+					<view class="plan-btn" wx:if="{{(roleId==7&&person.subwayPlanList[0].groupPlanStatus==1&&person.subwayPlanList[0].flag=='2')||(roleId==7&&person.subwayPlanList[0].groupPlanStatus==8&&person.subwayPlanList[0].flag=='2')}}">
+            <text class="planbtn-text" bindtap='deleteSubmit' data-personid="{{person.id}}">提交</text>
+          </view>
+					<!--新增的通过 驳回-->
+					<view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='1'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='1'}}">
+						<text class="planbtn-text" bindtap='addpersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='1'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='1'}}">
+						<text class="planbtn-text" bindtap='addpersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+					<!--修改的审核-->
+					<!--通过4 6-->
+					<view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='2'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='2'}}">
+            <text class="planbtn-text" bindtap='editpersonPass' data-personid="{{person.id}}">通过</text>
+          </view> 
+					 <view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='2'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='2'}}">
+            <text class="planbtn-text" bindtap='editpersonReject' data-personid="{{person.id}}">驳回</text>
+          </view>
+					<!--删除的审核-->
+					<!-- <view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='3'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='3'}}">
+						<text class="planbtn-text" bindtap='deletepersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==6&&person.subwayPlanList[0].securityPlanStatus==3&&person.subwayPlanList[0].flag=='3'||roleId==4&&person.subwayPlanList[0].stationAreaPlanStatus==3&&person.subwayPlanList[0].flag=='3'}}">
+						<text class="planbtn-text" bindtap='deletepersonReject' data-personid="{{person.id}}">驳回</text>
+					</view> -->
+					<!--8操作的安保公司班组 第二个流程 -->
+					<view class="plan-btn" wx:if="{{roleId==7&&person.workLicensePath!=null&&person.hrStatus!=7}}">
+						<text class="planbtn-text" bindtap='schedulePlan' data-personid="{{person.id}}">排班计划</text>
+					</view>
+					<!--1 2 3 查看-->
+					<view class="plan-btn" wx:if="{{roleId==1||roleId==2||roleId==3}}">
+						<text class="planbtn-text" bindtap='checkSchedule' data-personid="{{person.id}}">排班计划</text>
+					</view>
+					<!--5车站添加 第二个流程 4通过-->
+					<view class="plan-btn" wx:if="{{roleId==5&&person.stationAreaStatus==5}}">
+						<text class="planbtn-text" bindtap='addTemperature' data-personid="{{person.id}}">填写温度</text>
+					</view>
+
+				</view>
+				<!--审核状态-->
+				<!--状态 7 -->
+				<view class="table-status" wx:if="{{roleId==7}}">
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==0}}"></text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==1}}">未提交</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==2}}">已提交</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==3}}">待审核</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==4}}">审核中</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==5}}">已通过</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==6}}">驳回</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.subwayPlanList[0].groupPlanStatus==8}}">完成</text>
+				</view>
+				<!--6-->
+				<view class="table-status" wx:if="{{roleId==6}}">
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==0}}"></text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==1}}">未提交</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==2}}">已提交</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==3}}">待审核</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==4}}">审核中</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==5}}">已通过</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==6}}">驳回</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.subwayPlanList[0].securityPlanStatus==8}}">完成</text>
+				</view>
+				<view class="table-status" wx:if="{{roleId==4}}">
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==0}}"></text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==1}}">未提交</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==2}}">已提交</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==3}}">待审核</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==4}}">审核中</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==5}}">已通过</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==6}}">驳回</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.subwayPlanList[0].stationAreaPlanStatus==8}}">完成</text>
+				</view>
+			</view>
+		</view>
+
+		<!--填写温度的弹框-->
+		<modal id="modal" hidden="{{hiddenmodalput}}" title="填写站内温度" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" data-personid="{{person.id}}">
+			<view class="section">
+				<view class="section__title">测温时间</view>
+				<picker mode="date" value="{{date}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange">
+					<view class="picker">
+						当前选择: {{date}}
+					</view>
+				</picker>
+			</view>
+			<view class="user-info">
+				<text style="letter-spacing: 20rpx;" class="user-info-text">温度</text>
+				<input class="user-input" bindinput="bindKeyInput" data-type="temperature" placeholder-class="placeholder" placeholder="请输入温度" />
+			</view>
+			<view class="user-info">
+				<text class="user-info-text">就诊结果</text>
+				<picker class="user-picker" bindchange="bindPickerChange1" value="{{lines[index1].id}}" range="{{lines}}" range-key="{{'name'}}" data-selecthx="{{lines[index1].name}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{lines[index1].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+		</modal>
+	</view>
+</view>

@@ -1,0 +1,29 @@
+<view style="width: 90%;height:640rpx;overflow:hidden;margin: 0 auto 40rpx;">
+	<calendar calendarConfig="{{calendarConfig}}" bind:onSwipe="onSwipe" bind:onTapDay="onTapDay" bind:afterTapDay="afterTapDay" bind:whenChangeWeek="whenChangeWeek" bind:whenChangeMonth="whenChangeMonth" bind:afterCalendarRender="afterCalendarRender"></calendar>
+</view>
+
+<view class='b cc wrap btn-wrap'>
+	<button class='b cc btn btn-{{item.color}}' wx:for="{{actionBtn}}" wx:key="action" data-action="{{item.action}}" data-disable="{{item.disable}}" bindtap="handleAction">{{item.text}}</button>
+</view>
+<!-- <view class='deleteContainer'>
+	<image class='deleteImg' bindtap="addPlan" src='/image/icon/add.png'></image>
+</view> -->
+
+<view wx:if="{{plancontent!=null&&plancontent!=''}}">
+	事项：{{plancontent}}
+</view>
+
+<!--添加-->
+<modal id="modal" hidden="{{hiddenmodalput}}" title="填写计划" confirm-text="保存" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+	<view class="user-info">
+		<text style="letter-spacing: 20rpx;" class="user-info-text">内容</text>
+		<input class="user-input"  bindinput="bindKeyInput"  data-type="addcontent" placeholder-class="placeholder" placeholder="请输入内容" />
+	</view>
+</modal>
+<!--新增的提交-->
+
+	<button class="b cc btn btn-cyan" bindtap='addSubmit' data-personid="{{person.id}}">添加保存</button>
+
+<!--修改-->
+
+	<button class="b cc btn btn-pink" bindtap='editSubmit' data-personid="{{person.id}}">删除保存</button>

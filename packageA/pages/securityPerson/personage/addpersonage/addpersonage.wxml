@@ -1,0 +1,121 @@
+<!--pages/securityPerson/personage/addpersonage/addpersonage.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text class="user-info-text">分公司</text>
+			<picker class="user-picker" bindchange="bindPickerChange2" value="{{lines[index2].id}}" range="{{lines}}" range-key="{{'name'}}" data-selecthx="{{lines[index2].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{lines[index2].name}}" placeholder="请选择分公司" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">安保公司</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{sitePlaces[index3].id}}" range="{{sitePlaces}}" range-key="{{'company'}}" data-selecthx="{{sitePlaces[index3].company}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{sitePlaces[index3].company}}" placeholder="请选择安保公司" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">线别</text>
+			<picker class="user-picker" bindchange="bindPickerChange4" value="{{makes[index4].id}}" range="{{makes}}" range-key="{{'name'}}" data-selecthx="{{makes[index4].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{makes[index4].name}}" placeholder="请选择线别" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">站区/中心</text>
+			<picker class="user-picker" bindchange="bindPickerChange5" value="{{arrives[index5].id}}" range="{{arrives}}" range-key="{{'name'}}" data-selecthx="{{arrives[index5].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{arrives[index5].name}}" placeholder="请选择站区/中心" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">车站</text>
+			<picker class="user-picker" bindchange="bindPickerChange6" value="{{ways[index6].id}}" range="{{ways}}" range-key="{{'name'}}" data-selecthx="{{ways[index6].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{ways[index6].name}}" placeholder="请选择车站" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" bindinput="bindKeyInput" name="userName" data-type="userName" placeholder-class="placeholder" placeholder="请输入姓名" />
+		</view>
+		<view class="page-section">
+			<view class="weui-cells__title">证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" type="number" maxlength="18" bindinput="bindKeyInput" name="idNum" data-type="idNum" placeholder-class="placeholder" placeholder="请输入证件号" />
+				</view>
+			</view>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">性别</text>
+			<picker class="user-picker" bindchange="bindPickerChange1" value="{{projectArray[index1].id}}" range="{{projectArray}}" range-key="{{'name'}}" data-selecthx="{{projectArray[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{projectArray[index1].name}}" placeholder="请选择性别" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">资格证件号</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="qualificationNo" name="qualificationNo" placeholder-class="placeholder" placeholder="请输入资格证件号" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">籍贯</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="nativePlace" name="nativePlace" placeholder-class="placeholder" placeholder="请输入籍贯" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">联系方式</text>
+			<input class="user-input" bindinput="bindKeyInput" maxlength="11" data-type="phone" name="phone" placeholder-class="placeholder" placeholder="请输入联系方式" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">住址/暂住地</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="address" name="address" placeholder-class="placeholder" placeholder="请输入暂住地址" />
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">专业</text>
+			<picker class="user-picker" bindchange="bindPickerChange7" value="{{conditions[index7].id}}" range="{{conditions}}" range-key="{{'name'}}" data-selecthx="{{conditions[index7].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{conditions[index7].name}}" placeholder="请选择" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">班次</text>
+			<picker class="user-picker" bindchange="bindPickerChange9" value="{{conditions[index9].id}}" range="{{classes}}" range-key="{{'name'}}" data-selecthx="{{classes[index9].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{classes[index9].name}}" placeholder="请选择" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">在职状态</text>
+			<picker class="user-picker" bindchange="bindPickerChange8" data-selecthx="{{managers[index8].name}}" value="{{managers[index8].id}}" range="{{managers}}" range-key="{{'name'}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{managers[index8].name}}" placeholder="请选择" />
+				</view>
+			</picker>
+		</view>
+		<!--上传照片-->
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text"></text>
+			<button style="color:blue" bindtap="uploadImage">上传</button>
+		</view>
+		<view class="addimage">
+			<image src="{{addImage}}" class="addimg"></image>
+		</view>
+	</view>
+	<view class="user-button">
+		<view class="user-btn1" bindtap="cancel">
+			<text class="user-btn-text1">取消</text>
+		</view>
+		<view class="user-btn" bindtap="addPerson">
+			<text class="user-btn-text">添加</text>
+		</view>
+	</view>
+</view>

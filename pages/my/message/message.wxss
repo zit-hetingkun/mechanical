@@ -1,0 +1,40 @@
+/* pages/my/message/message.wxss */
+page{
+  background: #F8F8F8;
+  height: 100%;
+}
+.container-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.time{
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: #9E9E9E;
+  letter-spacing: 0;  
+}
+.message{
+  width: 90%;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  padding: 35rpx 25rpx;
+}
+.message-text1{
+  font-size: 30rpx;
+  color: #3B3B3B;
+  letter-spacing: 0;
+}
+.message-text2{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #9E9E9E;
+  letter-spacing: 0;
+  text-indent: 60rpx;
+  text-align: left;
+}

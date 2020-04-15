@@ -1,0 +1,60 @@
+/* pages/login/login.wxss */
+.contain {
+  display: block;
+  height: 12rpx;
+  background-color: #eaeae6;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 50rpx 60rpx 0 60rpx;
+  margin-top: 20rpx;
+}
+
+.phone-container {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1rpx solid #eaeae6;
+  padding: 30rpx 0;
+}
+
+.phone-input {
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #888888;
+  width: 70%
+}
+
+.phone-img {
+  height: 33rpx;
+  width: 29rpx;
+  vertical-align: middle;
+}
+
+
+.btn-large {
+  background-color: #2694f7;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 38rpx;
+  margin-left: 0;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  width: 205rpx;
+}
+
+.btn-container {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30rpx 0;
+}

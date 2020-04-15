@@ -1,0 +1,2 @@
+/**app.wxss**/
+@import "./components/dialog/dialog.wxss";

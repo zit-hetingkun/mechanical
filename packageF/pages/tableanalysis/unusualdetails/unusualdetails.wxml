@@ -1,0 +1,39 @@
+<!--pages/tableanalysis/unusualdetails/unusualdetails.wxml-->
+<!--测温异常明细-->
+<view>
+	<view class="container-name">
+		<view class="table-detail">安检</view>
+		<view class="table-detail">列乘</view>
+		<view class="table-detail">保安</view>
+		<view class="table-detail">合计</view>
+	</view>
+	<view class="container-name">
+			<view wx:for="{{temperatureHead.statisticsTotalNumbers}}" wx:for-item="person">
+				<view class="table-detail" wx:if="{{person.profession=='1'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='3'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='2'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='4'}}">{{person.number}}</view>
+			</view>
+		</view>
+	<view class="container-name">
+		<text class="table-detail">姓名</text>
+		<!-- <text class="table-detail">安保公司</text> -->
+		<text class="table-detail">专业</text>
+		<text class="table-detail">测温时间</text>
+		<text class="table-detail">温度</text>
+		<!-- <text class="table-detail">就诊结果</text> -->
+	</view>
+			<block  wx:for="{{temperature}}" wx:key="{{index}}">
+				<view class="table-container" style="color:#006bff">
+				<text class="worker-title">{{item.name}}</text>
+				<text class="worker-title" wx:if="{{item.profession=='1'}}">安检</text>
+					<text class="worker-title" wx:if="{{item.profession=='2'}}">保安</text>
+						<text class="worker-title" wx:if="{{item.profession=='3'}}">列乘</text>
+				<text class="worker-title">{{item.stationTemperatureTime}}</text>
+				<text class="worker-title">{{item.stationTemperature}}℃</text>
+				<!-- 	<text class="worker-title" wx:if="{{item.result==2}}">异常</text>	
+						<text class="worker-title" wx:if="{{item.result==3}}">异常</text>	 -->
+				</view>		
+			</block>
+
+</view>

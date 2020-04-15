@@ -1,0 +1,108 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/my/my",
+    "pages/register/register"
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/securityPerson/securityPersonList/securityPersonlist",
+        "pages/securityPerson/myworklicense/myworklicense",
+        "pages/securityPerson/personage/addpersonage/addpersonage",
+        "pages/securityPerson/personage/personagedetail/personagedetail",
+        "pages/securityPerson/personage/editpersonage/editpersonage",
+        "pages/successionPlan/successionPlanlist/successionPlanlist",
+        "pages/index/index"
+      ]
+    },
+    {
+      "root": "packageB",
+      "pages": [
+        "pages/addPlan/calendar/index",
+        "pages/addPlan/template/calendar/index",
+        "pages/addPlan/checkPlan/checkPlan",
+        "pages/addPlan/calendarComponent/index",
+        "pages/addPlan/securityPersonList/securityPersonlist"
+      ]
+    },
+    {
+      "root": "packageC",
+      "pages": [
+        "pages/index/index",
+        "pages/electroPerson/electroPersonlist/electroPersonlist",
+        "pages/electroPerson/editelectroPerson/editelectroPerson",
+        "pages/electroPerson/addelectroPerson/addelectroPerson",
+        "pages/electroPerson/electroPersondetail/electroPersondetail",
+        "pages/electroPerson/workLicense/workLicense"
+      ]
+    },
+    {
+      "root": "packageD",
+      "pages": [
+        "pages/changepassword/changepassword",
+        "pages/crewScheduling/crewSchedulinglist/crewSchedulinglist",
+        "pages/healthStatus/addhealthStatus/addhealthStatus",
+        "pages/healthStatus/edithealthStatus/edithealthStatus",
+        "pages/healthStatus/healthStatusdetail/healthStatusdetail",
+        "pages/healthStatus/healthStatuslist/healthStatuslist",
+        "pages/evaluate/evaluatelist/evaluatelist"
+      ]
+    },
+    {
+      "root": "packageE",
+      "pages": [
+        "pages/movement/addmovement/addmovement",
+        "pages/movement/editmovement/editmovement",
+        "pages/movement/movementdetail/movementdetail",
+        "pages/movement/movementlist/movementlist"
+      ]
+    },
+    {
+      "root": "packageF",
+      "pages": [
+        "pages/tableanalysis/statisticaldatalist",
+        "pages/tableanalysis/gobackpersonel/gobackpersonel",
+        "pages/tableanalysis/gopersonnel/gopersonnel",
+        "pages/tableanalysis/Isolateddetails/Isolateddetails",
+        "pages/tableanalysis/securitydetails/securitydetails",
+        "pages/tableanalysis/securitywork/securitywork",
+        "pages/tableanalysis/unusualdetails/unusualdetails"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/image/tab/home.png",
+        "selectedIconPath": "/image/tab/home_hl.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/image/tab/user.png",
+        "selectedIconPath": "/image/tab/user_hl.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "debug": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

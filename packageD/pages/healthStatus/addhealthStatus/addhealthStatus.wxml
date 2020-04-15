@@ -1,0 +1,96 @@
+<!--pages/electromechanical/healthStatus/addhealthStatus/addhealthStatus.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="name" placeholder-class="placeholder" placeholder="请输入姓名" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">证件号</text>
+			<input class="user-input" bindinput="bindKeyInput" type="number" maxlength="18" data-type="idNum" placeholder-class="placeholder" placeholder="请输入证件号" />
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">性别</text>
+			<picker class="user-picker" bindchange="bindPickerChange1" value="{{lines[index1].id}}" range="{{lines}}" range-key="{{'name'}}" data-selecthx="{{lines[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{lines[index1].name}}" placeholder="请选择性别" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">年龄</text>
+			<input class="user-input" bindinput="bindKeyInput" type="number" maxlength="2" data-type="age" placeholder-class="placeholder" placeholder="请输入年龄" />
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">所属公司</text>
+			<picker class="user-picker" bindchange="bindPickerChange7" value="{{companys[index7].id}}" range="{{companys}}" range-key="{{'name'}}" data-selecthx="{{companys[index7].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{companys[index7].name}}" placeholder="请选择所属公司" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">身体状况</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{ways[index3].id}}" range="{{ways}}" range-key="{{'name'}}" data-selecthx="{{ways[index3].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{ways[index3].name}}" placeholder="请选择" />
+				</view>
+			</picker>
+		</view>
+
+		<!--身体状况 异常-->
+		<view wx:if="{{ways[index3].id==2}}">
+			<view class="user-info">
+				<text class="user-info-text">不适症状</text>
+				<picker class="user-picker" bindchange="bindPickerChange2" data-selecthx="{{managers[index2].name}}" value="{{managers[index2].id}}" range="{{managers}}" range-key="{{'name'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{managers[index2].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<view class="user-info">
+				<text class="user-info-text">现居住小区是否有确诊病例</text>
+				<picker class="user-picker" bindchange="bindPickerChange4" data-selecthx="{{houses[index4].name}}" value="{{houses[index4].id}}" range="{{houses}}" range-key="{{'name'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{houses[index4].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<view class="user-info">
+				<text class="user-info-text">两周内是否有湖北地区或者人员接触史</text>
+				<picker class="user-picker" bindchange="bindPickerChange5" data-selecthx="{{touches[index5].name}}" value="{{touches[index5].id}}" range="{{touches}}" range-key="{{'name'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{touches[index5].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<view class="user-info">
+				<text class="user-info-text">是否就医</text>
+				<picker class="user-picker" bindchange="bindPickerChange6" data-selecthx="{{remedy[index6].name}}" value="{{remedy[index6].id}}" range="{{remedy}}" range-key="{{'name'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{remedy[index6].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<view class="user-info">
+				<text style="letter-spacing: 20rpx;" class="user-info-text">就医诊断结果</text>
+				<input class="user-input" bindinput="bindKeyInput" data-type="result" placeholder-class="placeholder" placeholder="请输入就医诊断结果" />
+			</view>
+			<view class="user-info">
+				<text style="letter-spacing: 5rpx;" class="user-info-text">诊断证明</text>
+				<button style="color:blue" bindtap="uploadImage">上传</button>
+			</view>
+			<view class="addimage">
+				<image src="{{addImage}}" class="addimg"></image>
+			</view>
+		</view>
+	</view>
+	<view class="user-button">
+		<view class="user-btn1" bind:tap="cencal">
+			<text class="user-btn-text1">取消</text>
+		</view>
+		<view class="user-btn" bind:tap="addPersonal">
+			<text class="user-btn-text">添加</text>
+		</view>
+	</view>
+</view>

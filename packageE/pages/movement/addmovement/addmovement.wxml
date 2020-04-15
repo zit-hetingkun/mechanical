@@ -1,0 +1,113 @@
+<!--pages/electromechanical/movement/addmovement/addmovement.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" bindinput="bindKeyInput" name="name" data-type="name" placeholder-class="placeholder" placeholder="请输入姓名" />
+		</view>
+		<view class="page-section">
+			<view class="weui-cells__title">证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" type="number" maxlength="18" bindinput="bindKeyInput" name="idNum" data-type="idNum" placeholder-class="placeholder" placeholder="请输入证件号" />
+				</view>
+			</view>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">所属公司</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{sitePlaces[index3].id}}" range="{{sitePlaces}}" range-key="{{'name'}}" data-selecthx="{{sitePlaces[index3].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{sitePlaces[index3].name}}" placeholder="请选择所属公司" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<view class="section">
+				<view class="section__title">计划出京日期</view>
+				<picker mode="date" value="{{date}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange">
+					<view class="picker">
+						当前选择: {{date}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="user-info">
+			<view class="section">
+				<view class="section__title">计划返京日期</view>
+				<picker mode="date" value="{{enddate}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange1">
+					<view class="picker">
+						当前选择: {{enddate}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">京外目的地</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="goalAddress" name="goalAddress" placeholder-class="placeholder" placeholder="请输入京外目的地" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">出京事由</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="reason" name="reason" placeholder-class="placeholder" placeholder="请输入出京事由" />
+		</view>
+		<view class="user-info">
+			<view class="section">
+				<view class="section__title">实际出京日期</view>
+				<picker mode="date" value="{{actualdate}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange2">
+					<view class="picker">
+						当前选择: {{actualdate}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="user-info">
+			<view class="section">
+				<view class="section__title">实际返京日期</view>
+				<picker mode="date" value="{{actualdate2}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange3">
+					<view class="picker">
+						当前选择: {{actualdate2}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">返京方式</text>
+			<picker class="user-picker" bindchange="bindPickerChange2" value="{{ways[index2].id}}" range="{{ways}}" range-key="{{'name'}}" data-selecthx="{{ways[index2].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{ways[index2].name}}" placeholder="请选择返京方式" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">交通工具编号</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="num" name="num" placeholder-class="placeholder" placeholder="请输入交通工具编号" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">返京路线</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="backLine" name="backLine" placeholder-class="placeholder" placeholder="请输入返京路线" />
+		</view>
+		<!--上传票据-->
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">票据记录</text>
+			<button style="color:blue" bindtap="uploadImage">上传</button>
+		</view>
+		<view class="addimage">
+			<image src="{{addImage}}" class="addimg"></image>
+		</view>
+		<!--漫游地-->
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">漫游地记录</text>
+			<button style="color:blue" bindtap="uploadImage2">上传</button>
+		</view>
+		<view class="addimage">
+			<image src="{{addImage2}}" class="addimg"></image>
+		</view>
+		<view class="user-button">
+			<view class="user-btn1" bindtap="cancel">
+				<text class="user-btn-text1">取消</text>
+			</view>
+			<view class="user-btn" bindtap="addPerson">
+				<text class="user-btn-text">添加</text>
+			</view>
+		</view>
+	</view>
+</view>

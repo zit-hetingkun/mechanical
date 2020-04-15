@@ -1,0 +1,29 @@
+<!--pages/tableanalysis/Isolateddetails/Isolateddetails.wxml-->
+<!--隔离人员统计-->
+<view>
+	<view class="container-name">
+		<text class="table-detail">姓名</text>
+		<text class="table-detail">安保公司</text>
+		<text class="table-detail">专业</text>
+		<text class="table-detail">隔离原因</text>
+		<text class="table-detail">开始日期</text>
+		<text class="table-detail">结束日期</text>
+	</view>
+	<view class="table-container">
+		<text class="worker-title">张恒</text>
+		<text class="worker-title">中安保</text>
+		<text class="worker-title">安检</text>
+		<text class="worker-title">体温异常</text>
+		<text class="worker-title">2020-02-14</text>
+		<text class="worker-title">2020-3-14</text>
+	</view>
+	<view class="table-container">
+		<text class="worker-title">杨洋</text>
+		<text class="worker-title">中安保</text>
+		<text class="worker-title">安检</text>
+		<text class="worker-title">体温异常</text>
+		<text class="worker-title">2020-02-14</text>
+		<text class="worker-title">2020-3-14</text>
+	</view>
+
+</view>

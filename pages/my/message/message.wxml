@@ -1,0 +1,12 @@
+<!--pages/my/message/message.wxml-->
+<view class="container">
+ <!-- <block wx:for="{{messageArr}}" wx:for-item="message"> -->
+  <view class="container-text">
+    <text class="time">2020-03-13</text>
+      <view class="message">
+        <text class="message-text1">温馨提示</text>
+        <text class="message-text2">你好，xxx</text>
+      </view>
+  </view>
+  <!-- </block> -->
+</view>

@@ -1,0 +1,98 @@
+/* pages/electromechanical/evaluate/evaluatelist/evaluatelist.wxss */
+.swiper-tab{
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;}
+.swiper-tab-list{  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: #777777;
+}
+.on{ color: blue;
+  border-bottom: 3rpx solid blue;}
+
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box view{
+  text-align: left;
+}
+/*搜索框*/
+.entirety{
+  height: 100%;
+}
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+}
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: rgb(7, 182, 4);
+  white-space: nowrap;
+}
+/*列表内容*/
+.container-plan{
+  height: 100%;
+}
+.container-type{
+  margin-top: 5rpx;
+  background-color: white;
+  height: 600rpx;
+  width: 100%;
+}
+.table-container{
+  border-bottom: 1px solid #dcdcdc;
+  width: 92%;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction:column;
+  vertical-align:middle;
+  box-sizing:border-box;
+  margin: 20rpx auto;
+  height:455rpx;
+}
+.table-detail{
+  font-size: 32rpx;
+  font-weight: 400;
+  margin-top: 20rpx;
+}
+.table-count{
+  width: 100%;
+  font-size: 30rpx;
+  color: rgb(158, 163, 158);
+  margin-top: 25rpx;
+  font-weight: 400;
+}

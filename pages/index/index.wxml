@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<import src="../../components/dialog/dialog.wxml" />
+<template data="{{...myDialog}}" is="dialog" />
+<view class="container">
+	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+		<block wx:for="{{movies}}" wx:for-index="index">
+			<swiper-item>
+				<image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="information">
+		<view class="bg_shape1" bindtap="securityPerson">
+			<image class="image-icon" src="/image/icon/xinxitiqu.png"></image>
+			<view class="section-text">
+				<text class="section-font">个人资料</text>
+			</view>
+		</view>
+			<view class="bg_shape1" bindtap="addPlan">
+			<image class="image-icon" src="/image/icon/drxx45.png"></image>
+			<view class="section-text">
+				<text class="section-font">排班计划</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="myworklicense">
+			<image class="image-icon" src="/image/icon/erweima_hl.png"></image>
+			<view class="section-text">
+				<text class="section-font">更多</text>
+			</view>
+		</view>	
+	</view>
+</view>

@@ -1,0 +1,32 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mini-name{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 200rpx;
+}
+.wx-msg{
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 40rpx;
+}
+.moto-container{
+  margin-top: 60rpx; 
+  text-align: center;
+}
+.wx-login-button{
+  width: 500rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  background-color: #32A047;
+  border-radius: 50rpx;
+  color: #fff;
+}
+.container1{
+  margin-top:80rpx;
+  text-align: center
+}

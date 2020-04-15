@@ -1,0 +1,75 @@
+<!--pages/electromechanical/movement/movementdetail/movementdetail.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">所属公司</text>
+			<input class="user-input" wx:if="{{company==1}}" value="外委单位一" placeholder-class="placeholder" />
+			<input class="user-input" wx:if="{{company==2}}" value="外委单位二" placeholder-class="placeholder" />
+			<input class="user-input" wx:if="{{company==3}}" value="外委单位三" placeholder-class="placeholder" />
+			<input class="user-input" wx:if="{{company==4}}" value="外委单位四" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" value="{{name}}" placeholder-class="placeholder" />
+		</view>
+		<view class="page-section">
+			<view class="weui-cells__title">证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" value="{{idNum}}" placeholder-class="placeholder" />
+				</view>
+			</view>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">计划出京日期</text>
+			<input class="user-input" value="{{planOutTime}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">计划返京日期</text>
+			<input class="user-input" value="{{planBackTime}}" placeholder-class="placeholder" />
+		</view>
+
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">京外目的地</text>
+			<input class="user-input" value="{{goalAddress}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">出京事由</text>
+			<input class="user-input" value="{{reason}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">实际出京日期</text>
+			<input class="user-input" value="{{practicalOutTime}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">实际返京日期</text>
+			<input class="user-input" value="{{practicalBackTime}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">返京方式</text>
+			<input class="user-input" value="{{way}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">交通工具编号</text>
+			<input class="user-input" value="{{num}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">返京路线</text>
+			<input class="user-input" value="{{backLine}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">票据记录</text>
+			<image style="width:500px;height:100px" src="{{provePath}}"></image>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">漫游地记录</text>
+			<image style="width:500px;height:100px" value="{{roamingPath}}"></image>
+		</view>
+		<!--按钮控制 进行权限判断-->
+		<view class="title-bottom">
+			<view class="plan-btn">
+				<text class="planbtn-text" bindtap='editPerson'>编辑</text>
+			</view>
+		</view>
+	</view>
+</view>

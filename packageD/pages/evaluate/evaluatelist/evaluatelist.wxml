@@ -1,0 +1,137 @@
+<!--pages/electromechanical/evaluate/evaluatelist/evaluatelist.wxml-->
+<!--内容布局-->
+<view class="entirety">
+	<view class="weui-search-bar">
+		<view class="weui-search-bar__form">
+			<!-- 搜索框 -->
+			<picker class="user-picker" bindchange="bindPickerChange2" value="{{checkstatus[index].id}}" range="{{checkstatus}}" range-key="{{'name'}}" data-selecthx="{{checkstatus[index].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{checkstatus[index].name}}" placeholder="请选择" />
+				</view>
+			</picker>
+		</view>
+		<!-- 搜索按钮,调用搜索查询方法 -->
+		<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+	</view>
+</view>
+<view class="swiper-tab">
+	<view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">周</view>
+	<view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">月</view>
+	<view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">季度</view>
+</view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px">
+	<!--1-->
+	<swiper-item>
+		<view class="container-plan">
+			<view wx:if="{{listContent!=null}}">
+				{{listContent}}
+			</view>
+			<view wx:for="{{persons}}" wx:for-item="person">
+				<view class="container-type">
+					<view class="table-container">
+						<view class="table-detail">
+							<text>姓名 ： {{person.name}}</text>
+						</view>
+						<view class="table-detail">
+							<text>证件号 ：{{person.idNum}}</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.companyId==1}}">所属公司：公司一</text>
+							<text wx:if="{{person.companyId==2}}">所属公司：公司二</text>
+							<text wx:if="{{person.companyId==3}}">所属公司：公司三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.projectOrg==1}}">所属项目部：项目部一</text>
+							<text wx:if="{{person.projectOrg==2}}">所属项目部：项目部二</text>
+							<text wx:if="{{person.projectOrg==3}}">所属项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.serviceProjectOrg==1}}">所属服务项目部：项目部一</text>
+							<text wx:if="{{person.serviceProjectOrg==2}}">所属服务项目部：项目部二</text>
+							<text wx:if="{{person.serviceProjectOrg==3}}">所属服务项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text>评价记录：{{person.evaluate}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</swiper-item>
+	<!--2-->
+	<swiper-item>
+		<view class="container-plan">
+			<view wx:if="{{listContent!=null}}">
+				{{listContent}}
+			</view>
+			<view wx:for="{{persons}}" wx:for-item="person">
+				<view class="container-type">
+					<view class="table-container">
+						<view class="table-detail">
+							<text>姓名 ：{{person.name}}</text>
+						</view>
+						<view class="table-detail">
+							<text>证件号 ：{{person.idNum}}</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.company==1}}">所属公司：公司一</text>
+							<text wx:if="{{person.company==2}}">所属公司：公司二</text>
+							<text wx:if="{{person.company==3}}">所属公司：公司三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.projectOrg==1}}">所属项目部：项目部一</text>
+							<text wx:if="{{person.projectOrg==2}}">所属项目部：项目部二</text>
+							<text wx:if="{{person.projectOrg==3}}">所属项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.serviceProjectOrg==1}}">所属服务项目部：项目部一</text>
+							<text wx:if="{{person.serviceProjectOrg==2}}">所属服务项目部：项目部二</text>
+							<text wx:if="{{person.serviceProjectOrg==3}}">所属服务项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text>评价记录：{{person.evaluate}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</swiper-item>
+	<!--3-->
+	<swiper-item>
+		<view class="container-plan">
+			<view wx:if="{{listContent!=null}}">
+				{{listContent}}
+			</view>
+			<view wx:for="{{persons}}" wx:for-item="person">
+				<view class="container-type">
+					<view class="table-container">
+						<view class="table-detail">
+							<text>姓名 ：{{person.name}}</text>
+						</view>
+						<view class="table-detail">
+							<text>证件号 ：{{person.idNum}}</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.companyId==1}}">所属公司：公司一</text>
+							<text wx:if="{{person.companyId==2}}">所属公司：公司二</text>
+							<text wx:if="{{person.companyId==3}}">所属公司：公司三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.projectOrg==1}}">所属项目部：项目部一</text>
+							<text wx:if="{{person.projectOrg==2}}">所属项目部：项目部二</text>
+							<text wx:if="{{person.projectOrg==3}}">所属项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text wx:if="{{person.serviceProjectOrg==1}}">所属服务项目部：项目部一</text>
+							<text wx:if="{{person.serviceProjectOrg==2}}">所属服务项目部：项目部二</text>
+							<text wx:if="{{person.serviceProjectOrg==3}}">所属服务项目部：项目部三</text>
+						</view>
+						<view class="table-detail">
+							<text>评价记录：{{person.evaluate}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</swiper-item>
+</swiper>

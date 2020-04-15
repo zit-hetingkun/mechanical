@@ -1,0 +1,54 @@
+<!--pages/electromechanical/index/index.wxml-->
+<!--index.wxml-->
+<import src="../../../components/dialog/dialog.wxml" />
+<template data="{{...myDialog}}" is="dialog" />
+<view class="container">
+	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+		<block wx:for="{{movies}}" wx:for-index="index">
+			<swiper-item>
+				<image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="information">
+		<view class="bg_shape1" bindtap="electroPerson">
+			<image class="image-icon" src="/image/icon/xinxitiqu.png"></image>
+			<view class="section-text">
+				<text class="section-font">人员基本信息</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="healthStatus">
+			<image class="image-icon" src="/image/icon/drxx45.png"></image>
+			<view class="section-text">
+				<text class="section-font">健康状况</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="momentPath">
+			<image class="image-icon" src="/image/icon/daidaqiatixing.png"></image>
+			<view class="section-text">
+				<text class="section-font">行动轨迹</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="scheduling">
+			<image class="image-icon" src="/image/icon/renyuanguanli.png"></image>
+			<view class="section-text">
+				<text class="section-font">排班</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="evaluatelist">
+			<image class="image-icon" src="/image/icon/-tongjibiao.png"></image>
+			<view class="section-text">
+				<text class="section-font">评价</text>
+			</view>
+		</view>
+		<view class="bg_shape1" bindtap="tableanalysis">
+			<image class="image-icon" src="/image/icon/erweima_hl.png"></image>			
+			<view class="section-text">
+				<text class="section-font">上岗证</text>
+			</view>
+		</view>
+
+	</view>
+
+
+</view>

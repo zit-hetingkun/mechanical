@@ -1,0 +1,14 @@
+<!--pages/login/login.wxml-->
+<view class="contain"></view>
+<view class="container">
+	<view class="phone-container">
+		<input class="phone-input" placeholder="请输入账号" placeholder-style="color:#ccc;" type="number" bindinput="bindKeyInput" data-type="phone" auto-focus />
+	</view>
+	<view class="phone-container">
+		<input class="phone-input" password="true" placeholder="请输入密码" placeholder-style="color:#ccc;" type="number" bindinput="bindKeyInput" data-type="password" auto-focus />
+	</view>
+	<view class='btn-container'>
+		<view class="btn-large" catchtap="loginBind">登录</view>
+		<view class="btn-large" bindtap="loginRegister">注册</view>
+	</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "排班计划",
+  "usingComponents": {
+    "calendar": "../../../component/calendar/index"
+  }
+}

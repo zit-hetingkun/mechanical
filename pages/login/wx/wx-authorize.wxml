@@ -1,0 +1,12 @@
+<view wx:if="{{canIUse}}"  class="container">
+  <text class="mini-name">安保小程序</text>
+  <text class="wx-msg">申请获取你的公开信息 （昵称，头像等）</text>
+  <view class="moto-container">
+    <button class="wx-login-button"
+    open-type="getUserInfo"
+    bindgetuserinfo="getUserInfo">
+    微信授权
+    </button>
+  </view>
+</view>
+<view wx:else class="container1">请升级微信版本</view>

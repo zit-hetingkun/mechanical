@@ -1,0 +1,61 @@
+<!--pages/tableanalysis/securitydetails/securitydetails.wxml-->
+<!-- 安保人员统计-->
+<view class='ticket-container'>
+	<view class="container-name">
+		<view class="table-detail">安检</view>
+		<view class="table-detail">列乘</view>
+		<view class="table-detail">保安</view>
+		<view class="table-detail">合计</view>
+	</view>
+	<view class="container-name">
+		<view wx:for="{{mountHead.statisticsDueNumbers}}" wx:for-item="person">
+				<view class="table-detail" wx:if="{{person.profession=='1'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='3'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='2'}}">{{person.number}}</view>
+				<view class="table-detail" wx:if="{{person.profession=='4'}}">{{person.number}}</view>
+			</view>
+	</view>
+		<view class="container-name">
+			<text class="table-detail">实到</text>
+			<block wx:for="{{mountHead.statisticsAttendanceNumbers}}" wx:key="{{index}}">
+		  	<view class="table-detail" wx:if="{{item.profession=='1'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='3'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='2'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='4'}}">{{item.number}}</view>
+			</block>
+		</view>
+		<view class="container-name">
+			<text class="table-detail">缺岗</text>
+			<block wx:for="{{mountHead.absences}}" wx:key="{{index}}">
+				<view class="table-detail" wx:if="{{item.profession=='1'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='3'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='2'}}">{{item.number}}</view>
+				<view class="table-detail" wx:if="{{item.profession=='4'}}">{{item.number}}</view>
+				</block>
+		</view>
+</view>
+	<view class="container-name">
+			<text class="table-detail">公司</text>
+			<text class="table-detail">安检</text>
+			<text class="table-detail">列乘</text>
+			<text class="table-detail">保安</text>
+			<text class="table-detail">合计</text>
+		</view>
+		<block wx:for="{{branchlist}}" wx:key="{{index}}">
+				<view class="table-container" bindtap="clickCompany" data-id="{{item.branchId}}">
+				<text class="worker-title">{{item.name}}</text>
+				<text class="worker-title">{{item.securityCheck}}</text>
+				<text class="worker-title">{{item.train}}</text>
+				<text class="worker-title">{{item.security}}</text>
+				<text class="worker-title">{{item.count}}</text>						
+				</view>
+			</block>
+			<block  wx:for="{{linelist}}" wx:key="{{index}}">
+				<view class="table-container" style="color:#006bff" hidden="{{clicked}}">
+				<text class="worker-title">{{item.name}}</text>
+				<text class="worker-title">{{item.securityCheck}}</text>
+				<text class="worker-title">{{item.train}}</text>
+				<text class="worker-title">{{item.security}}</text>
+				<text class="worker-title">{{item.count}}</text>	
+				</view>		
+			</block>

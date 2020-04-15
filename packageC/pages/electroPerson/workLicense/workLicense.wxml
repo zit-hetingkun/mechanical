@@ -1,0 +1,24 @@
+<!--packageC/pages/electroPerson/workLicense/workLicense.wxml-->
+<view class="container-type1">
+	<view class="title-wrap1">
+		<text class="title-text">上岗证</text>
+	</view>
+	<view class="table-container1">
+		<view class="table-detail">
+			<text class="article-title">姓名\t{{person.name}}\n</text>
+			<text class="article-title" wx:if="{{person.category==1}}">人员类别\t生产\n</text>
+			<text class="article-title" wx:if="{{person.category==2}}">人员类别\t管理\n</text>
+			<text class="article-title" wx:if="{{person.companyId==1}}">所属公司\t外委单位一\n</text>
+			<text class="article-title" wx:if="{{person.companyId==2}}">所属公司\t外委单位二\n</text>
+			<text class="article-title" wx:if="{{person.companyId==3}}">所属公司\t外委单位三\n</text>
+			<text class="article-title" wx:if="{{person.companyId==4}}">所属公司\t外委单位四\n</text>
+			<text class="article-title"  wx:if="{{person.projectOrg==1}}">所属项目部\t项目部一</text>
+			<text  class="article-title" wx:if="{{person.projectOrg==2}}">所属项目部\t项目部二</text>
+			<text class="article-title"  wx:if="{{person.projectOrg==3}}">所属项目部\t项目部三</text>
+			<image class="table-img" src="https://www.zit.com.cn//usr/local/zit/file/mechanical/1586678975286.jpg"></image>
+		</view>
+	</view>
+</view>
+
+
+<!--姓名 人员类别 安保公司 所属项目部 -->

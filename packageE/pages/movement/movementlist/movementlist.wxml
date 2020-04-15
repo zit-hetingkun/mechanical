@@ -1,0 +1,69 @@
+<!--pages/electromechanical/movement/movementlist/movementlist.wxml-->
+<!--pages/electromechanical/electroPerson/electroPersonlist/electroPersonlist.wxml-->
+<view class='ticket-container'>
+	<!--内容布局-->
+	<view class="entirety">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<!-- 搜索框 -->
+				<picker class="user-picker" bindchange="bindPickerChange2" value="{{checkstatus[index].id}}" range="{{checkstatus}}" range-key="{{'name'}}" data-selecthx="{{checkstatus[index].name}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{checkstatus[index].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<!-- 搜索按钮,调用搜索查询方法 -->
+			<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+		</view>
+	</view>
+	<!--基本信息列表展示 -->
+	<view class="container-plan">
+		<view wx:if="{{listContent!=null}}">
+			{{listContent}}
+		</view>
+		<view wx:for="{{persons}}" wx:for-item="person">
+			<view>
+				<view class="container-type">
+					<view class="table-container" bind:tap="persondetails" data-personid="{{person.id}}">
+						<!--公司-->
+						<view class="table-detail">
+							<text wx:if="{{person.companyId==1}}">所属公司：外委单位一</text>
+							<text wx:if="{{person.companyId==2}}">所属公司：外委单位二</text>
+							<text wx:if="{{person.companyId==3}}">所属公司：外委单位三</text>
+							<text wx:if="{{person.companyId==4}}">所属公司：外委单位四</text>
+						</view>
+						<view class="table-count">
+							<text>姓名 ： {{person.name}}</text>
+						</view>
+						<view class="table-count">
+							<text>计划出京日期：{{person.planOutTime}}</text>
+						</view>
+						<view class="table-count">
+							<text>计划返京日期：{{person.planBackTime}}</text>
+						</view>
+						<view class="table-count">
+							<text>京外目的地：{{person.goalAddress}}</text>
+						</view>
+						<view class="table-count">
+							<text wx:if="{{person.way==1}}">返京方式：飞机</text>
+							<text wx:if="{{person.way==2}}">返京方式：火车/高铁</text>
+							<text wx:if="{{person.way==3}}">返京方式：客车</text>
+							<text wx:if="{{person.way==4}}">返京方式：自驾</text>
+						</view>
+					</view>
+					<view class="title-bottom">
+						<view>
+							<view class="plan-btn">
+								<text class="planbtn-text" bindtap='deleteMovement' data-personid="{{person.id}}">删除</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!--添加按钮 4 6-->
+	<view class='deleteContainer'>
+		<image class='deleteImg' bind:tap="addMovement" src='/image/icon/add.png'></image>
+	</view>
+</view>

@@ -1,0 +1,107 @@
+/* pages/electromechanical/movement/movementdetail/movementdetail.wxss */
+/* pages/electromechanical/electroPerson/electroPersondetail/electroPersondetail.wxss */
+page {
+  background-color: #f2f2f2;
+  padding-right: 0;
+  overflow-x: hidden;
+}
+
+.user-text {
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #138DE9;
+  text-align: center;
+  justify-content: center;
+  /**内容居中*/
+  vertical-align: center;
+  /**垂直居中*/
+  display: flex;
+  /*设置显示样式**/
+  align-items: center;
+  /**子view垂直居中*/
+}
+
+.user {
+  background: white;
+  margin: 20rpx 20rpx 0 20rpx;
+  height: 1850rpx;
+}
+
+.user-info {
+  width: 90%;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+  border-bottom: 2rpx solid #d4cfcf;
+}
+
+.user-info-text {
+  line-height: 70rpx;
+  width: 80%;
+  font-size: 32rpx;
+}
+
+input {
+  /* margin-right: 20rpx; */
+  height: 70rpx;
+  display: block;
+}
+
+.user-picker {
+  width: 80%;
+}
+
+.user-picker1 {
+  display: flex;
+  flex-direction: row;
+  height: 70rpx;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-input {
+  text-align: right;
+}
+
+.placeholder {
+  text-align: right;
+}
+
+.page-section {
+  margin-left: 20rpx;
+  width: 90%;
+  padding: 15rpx;
+  border-bottom: 2rpx solid #d4cfcf;
+}
+
+.user-back {
+  width: 25rpx;
+  height: 25rpx;
+  vertical-align: middle;
+}
+
+/*按钮*/
+.title-bottom {
+  margin: 30rpx 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.plan-btn {
+  background: #138DE9;
+  text-align: center;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 160rpx;
+}
+
+.planbtn-text {
+  color: white;
+  font-size: 32rpx;
+  font-weight: 400;
+}

@@ -1,0 +1,33 @@
+/* pages/electromechanical/index/index.wxss */
+/**index.wxss**/
+page{
+  background-color: #f5f5f5;
+}
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.information{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: #fff;
+  height: 350rpx;
+}
+.bg_shape1{
+  height: 150rpx;
+  width: 200rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.image-icon{
+  height: 70rpx;
+  width: 70rpx;
+}
+.section-font{
+  font-size: 26rpx;
+}

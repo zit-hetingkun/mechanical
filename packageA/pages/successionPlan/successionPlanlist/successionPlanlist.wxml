@@ -1,0 +1,57 @@
+<!--pages/successionPlan/successionPlanlist/successionPlanlist.wxml-->
+<!--排班计划列表-->
+<view class='ticket-container'>
+	<!--内容布局-->
+	<view class="entirety">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<!-- 搜索框 -->
+				<picker class="user-picker" bindchange="bindPickerChange2" value="{{centers[index].id}}" range="{{centers}}" data-selecthx="{{centers[index].name}}" range-key="{{'name'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{centers[index].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<!-- 搜索按钮,调用搜索查询方法 -->
+			<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+		</view>
+	</view>
+	<!--基本信息列表展示  subwayTemperature-->
+	<view class="container-plan">
+			<view wx:if="{{listContent!=null}}"> 
+			{{listContent}}
+		</view>
+		<view wx:for="{{plans}}" wx:for-item="plan">
+			<view class="container-type">
+				<view class="table-container">
+					<!--分公司-->
+					<view class="table-detail">
+						<text>分公司：{{plan.operatingBranchName}}</text>
+					</view>
+					<!--安保公司-->
+					<view class="table-detail">
+						<text>安保公司：{{plan.securityCompanyName}}</text>
+					</view>
+					<view class="table-count">
+						<text>姓名 ：{{plan.name}}</text>
+					</view>
+					<view class="table-count">
+						<text>资格证件号：{{plan.qualificationNo}}</text>
+					</view>
+					<view class="table-count">
+						<text>站内测温时间 ：{{plan.subwayTemperature.stationTemperatureTime}}</text>
+					</view>
+					<view class="table-count">
+						<text>站内测温温度 ：{{plan.subwayTemperature.stationTemperature}}</text>
+					</view>
+					<view class="table-count" wx:if="{{plan.subwayTemperature.remark==null}}">
+						<text>备注 ：</text>
+					</view>
+					<view class="table-count" wx:if="{{plan.subwayTemperature.remark!=null}}">
+						<text>备注 ：{{plan.subwayTemperature.remark}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

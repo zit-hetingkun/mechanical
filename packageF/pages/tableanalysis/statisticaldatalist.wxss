@@ -1,0 +1,156 @@
+/* pages/tableanalysis/statisticaldatalist.wxss */
+.swiper-tab{
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;}
+.swiper-tab-list{  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: #777777;
+}
+.on{ color: blue;
+  border-bottom: 3rpx solid blue;}
+
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box view{
+  text-align: left;
+}
+.title {
+  width: 100%;
+  height: 88rpx; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.title-sel {
+  color: #24272c;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-sel  .line-style{
+  background: #fff;
+  height: 6rpx;
+  width: 120rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+.title-sel-selected{
+  color: #006bff;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-sel-selected .line-style{
+  background: #006bff;
+  height: 6rpx;
+  width: 140rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+swiper{
+  height:500rpx;
+  width: 100%;
+}
+ec-canvas {
+  width: 100%;
+  height: 950rpx;
+  position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+} 
+.container-name{
+  width: 92%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  box-sizing:border-box;
+  margin: 20rpx auto;
+  height:50rpx;
+}
+.table-detail{
+  font-size: 32rpx;
+  font-weight: 700;
+  color:  rgb(4, 24, 39);
+  height: 45rpx;
+  width: 130rpx;
+  text-align: center;
+}
+.worker-title{
+  text-align: center;
+  height: 45rpx;
+  width: 130rpx;
+  color: lightskyblue;
+}
+.table-content{
+  text-align: center;
+  height: 45rpx;
+  width: 130rpx;
+  color: green;
+  font-size: 28rpx;
+}
+.explain-person{
+  margin-top: 1500rpx;
+  text-align: center;
+}
+
+.plan-btn {
+  background: #138DE9;
+  text-align: center;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 160rpx;
+  float: right;
+  margin-top: 65rpx;
+}
+.plan-btn1 {
+  background: #138DE9;
+  text-align: center;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 160rpx;
+  float: right;
+  margin-top: 430rpx;
+}
+.planbtn-text {
+  color: white;
+  font-size: 32rpx;
+  font-weight: 400;
+  text-align: center;
+  height: 100rpx;
+  width: auto;
+}
+.swiper-title{
+  width: 100%;
+  height: 320rpx;
+}
+.swiper-content{
+  width: 100%;
+  height:500rpx;
+}
+#mychart-dom-bar5{
+  width: 100%;
+  height:100%;
+  margin-top: 160rpx;
+}
+.information{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: #fff;
+  height: 350rpx;
+}
+.bg_shape1{
+  height: 80rpx;
+  width: 200rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  background-color:#138DE9;
+}
+
+
+ 

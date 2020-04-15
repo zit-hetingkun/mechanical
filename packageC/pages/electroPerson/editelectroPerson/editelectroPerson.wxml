@@ -1,0 +1,122 @@
+<!--pages/electromechanical/electroPerson/addelectroPerson/addelectroPerson.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" value="{{name}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">修改的姓名</text>
+			<input class="user-input" bindinput="bindKeyInput" name="editname" data-type="editname" placeholder-class="placeholder" placeholder="请输入姓名" />
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">性别</text>
+			<picker class="user-picker" bindchange="bindPickerChange1" value="{{projectArray[index1].id}}" range="{{projectArray}}" range-key="{{'name'}}" data-selecthx="{{projectArray[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{projectArray[index1].name}}" placeholder="请选择性别" />
+				</view>
+			</picker>
+		</view>
+
+		<view class="page-section">
+			<view class="weui-cells__title">证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" value="{{idNum}}" placeholder-class="placeholder" />
+				</view>
+			</view>
+		</view>
+		<view class="page-section">
+			<view class="weui-cells__title">修改的证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" type="number" maxlength="18" bindinput="bindKeyInput" name="editidNum" data-type="editidNum" placeholder-class="placeholder" placeholder="请输入证件号" />
+				</view>
+			</view>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">年龄</text>
+			<input class="user-input" value="{{age}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">修改的年龄</text>
+			<input class="user-input" type="number" maxlength="2" bindinput="bindKeyInput" data-type="editage" name="editage" placeholder-class="placeholder" placeholder="请输入年龄" />
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">人员类别</text>
+			<picker class="user-picker" bindchange="bindPickerChange2" value="{{lines[index2].id}}" range="{{lines}}" range-key="{{'name'}}" data-selecthx="{{lines[index2].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{lines[index2].name}}" placeholder="请选择人员类别" />
+				</view>
+			</picker>
+		</view>
+
+
+		<view class="user-info">
+			<text class="user-info-text">所属公司</text>
+			<picker class="user-picker" bindchange="bindPickerChange4" value="{{companys[index4].id}}" range="{{companys}}" range-key="{{'name'}}" data-selecthx="{{companys[index4].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{companys[index4].name}}" placeholder="请选择所属公司" />
+				</view>
+			</picker>
+		</view>
+
+		<view class="user-info">
+			<text class="user-info-text">所属项目部</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{sitePlaces[index3].id}}" range="{{sitePlaces}}" range-key="{{'name'}}" data-selecthx="{{sitePlaces[index3].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{sitePlaces[index3].name}}" placeholder="请选择所属项目部" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">户口所在地</text>
+			<input class="user-input" value="{{registeredAddress}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">修改的户口所在地</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="editregisteredAddress" name="editregisteredAddress" placeholder-class="placeholder" placeholder="请输入户口所在地" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">在京居住地</text>
+			<input class="user-input" value="{{bjAddress}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">修改的在京居住地</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="editbjAddress" name="editbjAddress" placeholder-class="placeholder" placeholder="请输入在京居住地" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">电话</text>
+			<input class="user-input" value="{{phone}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">修改的电话</text>
+			<input class="user-input" bindinput="bindKeyInput" type="number" maxlength="11" data-type="editphone" name="editphone" placeholder-class="placeholder" placeholder="请输入联系电话" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">紧急联系人</text>
+			<input class="user-input" value="{{emergencyPerson}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">修改的紧急联系人</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="editemergencyPerson" name="editemergencyPerson" placeholder-class="placeholder" placeholder="请输入紧急联系人" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">联系电话</text>
+			<input class="user-input" value="{{emergencyPhone}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">修改的联系电话</text>
+			<input class="user-input" bindinput="bindKeyInput" type="number" maxlength="11" data-type="editemergencyPhone" name="editemergencyPhone" placeholder-class="placeholder" placeholder="请输入联系电话" />
+		</view>
+
+		<view class="user-button">
+			<view class="user-btn1" bindtap="cancel">
+				<text class="user-btn-text1">取消</text>
+			</view>
+			<view class="user-btn" bindtap="editPerson">
+				<text class="user-btn-text">修改</text>
+			</view>
+		</view>
+	</view>
+</view>

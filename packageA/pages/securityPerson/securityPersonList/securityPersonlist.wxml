@@ -1,0 +1,165 @@
+<view class='ticket-container'>
+	<!--内容布局-->
+	<view class="entirety">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<!-- 搜索框 -->
+				<picker class="user-picker" bindchange="bindPickerChange2" value="{{securityCompany[index].id}}" range="{{securityCompany}}" data-selecthx="{{securityCompany[index].company}}" range-key="{{'company'}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{securityCompany[index].company}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<!-- 搜索按钮,调用搜索查询方法 -->
+			<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+		</view>
+	</view>
+	<!--基本信息列表展示 -->
+	<view class="container-plan">
+		<view wx:if="{{listContent!=null}}">
+			{{listContent}}
+		</view>
+		<view wx:for="{{persons}}" wx:for-item="person">
+			<view class="container-type">
+				<view class="table-container" bind:tap="persondetails" data-personid="{{person.id}}">
+					<!--分公司-->
+					<view class="table-detail">
+						<text>分公司：{{person.operatingBranchName}}</text>
+					</view>
+					<!--安保公司-->
+					<view class="table-detail">
+						<text>安保公司： {{person.securityCompanyName}}</text>
+					</view>
+					<!--线别-->
+					<view class="table-detail">
+						<text>线别：{{person.lineName}}</text>
+					</view>
+					<view class="table-count">
+						<text>站区/中心：{{person.stationAreaName}}</text>
+					</view>
+					<view class="table-count">
+						<text>车站 ： {{person.stationName}}</text>
+					</view>
+					<view class="table-count">
+						<text>姓名 ： {{person.name}}</text>
+					</view>
+				</view>
+				<view class="title-bottom">
+					<!--新增的提交-->
+					<view class="plan-btn" wx:if="{{((roleId==4&&person.stationAreaStatus==8)||(roleId==6&&person.securityStatus==8))&&person.flag=='1'}}">
+						<text class="planbtn-text" bindtap='addSubmit' data-personid="{{person.id}}">提交</text>
+					</view>
+					<!--修改的提交 对于已提交的状态会有一个修改的提交***-->
+					<view class="plan-btn" wx:if="{{roleId==4&&(person.stationAreaStatus==1||person.stationAreaStatus==6||person.stationAreaStatus==8)&&person.flag=='2'||roleId==6&&(person.securityStatus==1||person.securityStatus==6||person.securityStatus==8)&&person.flag=='2'}}">
+						<text class="planbtn-text" bindtap="editPerson" data-personid="{{person.id}}">提交</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==4&&(person.stationAreaStatus==1||person.stationAreaStatus==6||person.stationAreaStatus==8)&&person.flag=='3'||roleId==6&&(person.securityStatus==1||person.securityStatus==6||person.securityStatus==8)&&person.flag=='3'}}">
+						<text class="planbtn-text" bindtap="deleteSubmit"  data-personid="{{person.id}}">提交</text>
+					</view>
+					<!--人员 没有审核-->
+					<!--新增的通过 驳回-->
+					<view class="plan-btn" wx:if="{{(((roleId==2||roleId == 1)&&person.hrStatus==3)||(roleId==3&&person.branchStatus==3))&&person.flag==1}}">
+						<text class="planbtn-text" bindtap='addpersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{(((roleId==2||roleId == 1)&&person.hrStatus==3)||(roleId==3&&person.branchStatus==3))&&person.flag==1}}">
+						<text class="planbtn-text" bindtap='addpersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+					<!--修改的审核-->
+					<!--通过判断-->
+					<view class="plan-btn" wx:if="{{roleId==4&&person.stationAreaStatus==3&&person.flag==2||roleId==3&&person.branchStatus==3&&person.flag==2||(roleId==2||roleId==1)&&person.hrStatus==3&&person.flag==2}}">
+						<text class="planbtn-text" bindtap='editpersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==4&&person.stationAreaStatus==3&&person.flag==2||roleId==3&&person.branchStatus==3&&person.flag==2||(roleId==2||roleId==1)&&person.hrStatus==3&&person.flag==2}}">
+						<text class="planbtn-text" bindtap='editpersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+					<!--删除的审核-->
+					<view class="plan-btn" wx:if="{{roleId==4&&person.stationAreaStatus==3&&person.flag==3||roleId==3&&person.branchStatus==3&&person.flag==3||(roleId==2||roleId==1)&&person.hrStatus==3&&person.flag==3}}">
+						<text class="planbtn-text" bindtap='deletepersonPass' data-personid="{{person.id}}">通过12</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==4&&person.stationAreaStatus==3&&person.flag==3||roleId==3&&person.branchStatus==3&&person.flag==3||(roleId==2||roleId==1)&&person.hrStatus==3&&person.flag==3}}">
+						<text class="planbtn-text" bindtap='deletepersonReject' data-personid="{{person.id}}">驳回12</text>
+					</view>
+					<!--拉黑 随时拉黑-->
+					<view class="plan-btn" wx:if="{{roleId==1&&person.hrStatus!=7||roleId==2&&person.hrStatus!=7||roleId==3&&person.branchStatus!=7}}">
+						<text class="planbtn-text" bindtap='personBlock' data-personid="{{person.id}}">拉黑</text>
+					</view>
+					<!--培训通过显示发证-->
+					<view>
+						<view class="plan-btn" wx:if="{{roleId==1&&person.isTrain=='1'&&(person.workLicensePath==null||person.workLicensePath=='')}}">
+							<text class="planbtn-text" bindtap='sendFile' data-personid="{{person.id}}">发证</text>
+						</view>
+					</view>
+					<!--hr所有审核都通过-->
+					<view class="plan-btn" wx:if="{{roleId==3&&person.hrStatus=='5'&&person.isTrain=='2'}}">
+						<text class="planbtn-text" bindtap='trainPass' data-personid="{{person.id}}">培训通过</text>
+					</view>
+				</view>
+				<!--审核状态-->
+				<!--hr状态 1 2 -->
+				<view class="table-status" wx:if="{{roleId==1||roleId==2}}">
+					<text wx:if="{{person.hrStatus==0}}"></text>
+					<text wx:if="{{person.hrStatus==1}}">未提交</text>
+					<text wx:if="{{person.hrStatus==2}}">已提交</text>
+					<text wx:if="{{person.hrStatus==3}}">待审核</text>
+					<text wx:if="{{person.hrStatus==4}}">审核中</text>
+					<text wx:if="{{person.hrStatus==5}}">已通过</text>
+					<text wx:if="{{person.hrStatus==6}}">驳回</text>
+					<text wx:if="{{person.hrStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.hrStatus==8}}"></text>
+				</view>
+				<!--运营分公司 3-->
+				<view class="table-status" wx:if="{{roleId==3}}">
+					<text wx:if="{{person.branchStatus==0}}"></text>
+					<text wx:if="{{person.branchStatus==1}}">未提交</text>
+					<text wx:if="{{person.branchStatus==2}}">已提交</text>
+					<text wx:if="{{person.branchStatus==3}}">待审核</text>
+					<text wx:if="{{person.branchStatus==4}}">审核中</text>
+					<text wx:if="{{person.branchStatus==5}}">已通过</text>
+					<text wx:if="{{person.branchStatus==6}}">驳回</text>
+					<text wx:if="{{person.branchStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.branchStatus==8}}"></text>
+				</view>
+				<!--站区状态 4 -->
+				<view class="table-status" wx:if="{{roleId==4}}">
+					<text wx:if="{{person.stationAreaStatus==0}}"></text>
+					<text wx:if="{{person.stationAreaStatus==1}}">未提交</text>
+					<text wx:if="{{person.stationAreaStatus==2}}">已提交</text>
+					<text wx:if="{{person.stationAreaStatus==3}}">待审核</text>
+					<text wx:if="{{person.stationAreaStatus==4}}">审核中</text>
+					<text wx:if="{{person.stationAreaStatus==5}}">已通过</text>
+					<text wx:if="{{person.stationAreaStatus==6}}">驳回</text>
+					<text wx:if="{{person.stationAreaStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.stationAreaStatus==8}}"></text>
+				</view>
+				<!--车站 5-->
+				<view class="table-status" wx:if="{{roleId==5}}">
+					<text wx:if="{{person.stationStatus==0}}"></text>
+					<text wx:if="{{person.stationStatus==1}}">未提交</text>
+					<text wx:if="{{person.stationStatus==2}}">已提交</text>
+					<text wx:if="{{person.stationStatus==3}}">待审核</text>
+					<text wx:if="{{person.stationStatus==4}}">审核中</text>
+					<text wx:if="{{person.stationStatus==5}}">已通过</text>
+					<text wx:if="{{person.stationStatus==6}}">驳回</text>
+					<text wx:if="{{person.stationStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.stationStatus==8}}"></text>
+				</view>
+				<!--安保公司6-->
+				<view class="table-status" wx:if="{{roleId==6}}">
+					<text wx:if="{{person.securityStatus==0}}"></text>
+					<text wx:if="{{person.securityStatus==1}}">未提交</text>
+					<text wx:if="{{person.securityStatus==2}}">已提交</text>
+					<text wx:if="{{person.securityStatus==3}}">待审核</text>
+					<text wx:if="{{person.securityStatus==4}}">审核中</text>
+					<text wx:if="{{person.securityStatus==5}}">已通过</text>
+					<text wx:if="{{person.securityStatus==6}}">驳回</text>
+					<text wx:if="{{person.securityStatus==7}}">已拉黑</text>
+					<text wx:if="{{person.securityStatus==8}}"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!--添加按钮 4 6-->
+	<view class='deleteContainer' wx:if="{{roleId===6||roleId==4}}">
+		<image class='deleteImg' bind:tap="addPerson" src='/image/icon/add.png'></image>
+	</view>
+</view>

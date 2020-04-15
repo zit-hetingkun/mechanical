@@ -1,0 +1,233 @@
+<!--pages/electromechanical/electroPerson/electroPersonlist/electroPersonlist.wxml-->
+<view class='ticket-container'>
+	<!--内容布局-->
+	<view class="entirety">
+		<view class="weui-search-bar">
+			<view class="weui-search-bar__form">
+				<!-- 搜索框 -->
+				<picker class="user-picker" bindchange="bindPickerChange2" value="{{checkstatus[index].id}}" range="{{checkstatus}}" range-key="{{'name'}}" data-selecthx="{{checkstatus[index].name}}">
+					<view class="user-picker1">
+						<input disabled="true" bindinput="userLearnInput1" class="user-input1" placeholder-class="placeholder" value="{{checkstatus[index].name}}" placeholder="请选择" />
+					</view>
+				</picker>
+			</view>
+			<!-- 搜索按钮,调用搜索查询方法 -->
+			<view class="weui-search-bar__cancel-btn" bindtap='searchPlace'>搜索</view>
+		</view>
+	</view>
+	<!--基本信息列表展示 -->
+	<view class="container-plan">
+		<view wx:if="{{listContent!=null}}">
+			{{listContent}}
+		</view>
+		<view wx:for="{{persons}}" wx:for-item="person">
+			<view class="container-type">
+				<view class="table-container" bind:tap="persondetails" data-personid="{{person.id}}">
+					<!--分公司-->
+					<view class="table-detail">
+						<text wx:if="{{person.companyId==1}}">所属公司：外委单位一</text>
+						<text wx:if="{{person.companyId==2}}">所属公司：外委单位二</text>
+						<text wx:if="{{person.companyId==3}}">所属公司：外委单位三</text>
+						<text wx:if="{{person.companyId==4}}">所属公司：外委单位四</text>
+					</view>
+					<!--安保公司-->
+					<view class="table-detail">
+						<text  wx:if="{{person.projectOrg==1}}">所属项目部：项目部一</text>
+						<text  wx:if="{{person.projectOrg==2}}">所属项目部：项目部二</text>
+						<text  wx:if="{{person.projectOrg==3}}">所属项目部：项目部三</text>
+					</view>
+					<!--线别-->
+					<view class="table-detail">
+						<text wx:if="{{person.category==1}}">人员类别：生产</text>
+						<text wx:if="{{person.category==2}}">人员类别：管理</text>
+					</view>
+					<view class="table-count">
+						<text>姓名 ： {{person.name}}</text>
+					</view>
+					<view class="table-count">
+						<text>联系电话：{{person.phone}}</text>
+					</view>
+					<view class="table-count">
+						<text wx:if="{{person.gender==1}}">性别 ：男</text>
+						<text wx:if="{{person.gender==2}}">性别 ：女</text>
+					</view>
+				</view>
+				<view class="title-bottom">
+					<!--新增的提交-->
+					<view class="plan-btn" wx:if="{{(roleId==3&&person.outerStatus=='1'&&person.flag=='1')||(roleId==3&&person.outerStatus=='8'&&person.flag=='1')}}">
+						<text class="planbtn-text" bindtap='addSubmit' data-personid="{{person.id}}">提交</text>
+					</view>
+					<!--修改的提交 对于已提交的状态会有一个修改的提交***-->
+					<view class="plan-btn" wx:if="{{(roleId==3&&person.outerStatus=='1'&&person.flag=='2')||(roleId==2&&person.projectStatus=='1'&&person.flag=='2')||(roleId==3&&person.outerStatus=='8'&&person.flag=='2')||(roleId==2&&person.projectStatus=='8'&&person.flag=='2')}}">
+						<text class="planbtn-text" bindtap="editSubmit" data-personid="{{person.id}}">提交</text>
+					</view>
+					<!--删除的提交***-->
+					<view class="plan-btn" wx:if="{{(roleId==3&&person.outerStatus!='2')||(roleId==2&&person.projectStatus!='2')||(roleId==3&&person.outerStatus!='3')||(roleId==2&&person.projectStatus!='3')||(roleId==3&&person.outerStatus!='4')||(roleId==2&&person.projectStatus!='4')}}">
+						<!-- <view class="plan-btn" wx:if="{{(roleId==3&&(person.outerStatus=='1'||person.outerStatus=='8'))}}"> -->
+						<text class="planbtn-text" bindtap="deleteSubmit"  data-personid="{{person.id}}">删除</text>
+					</view>
+					<!--人员 没有审核-->
+					<!--新增的通过 驳回 1-->
+					<view class="plan-btn" wx:if="{{roleId==1&&person.securityStatus=='3'&&person.flag=='1'}}">
+						<text class="planbtn-text" bindtap='addpersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{roleId==1&&person.securityStatus=='3'&&person.flag=='1'}}">
+						<text class="planbtn-text" bindtap='addpersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+					<!--修改的审核-->
+					<!--通过判断-->
+					<view class="plan-btn" wx:if="{{(roleId==1&&person.securityStatus=='3'&&person.flag=='2')||(roleId==2&&person.projectStatus=='3'&&person.flag=='2')}}">
+						<text class="planbtn-text" bindtap='editpersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{(roleId==1&&person.securityStatus=='3'&&person.flag=='2')||(roleId==2&&person.projectStatus=='3'&&person.flag=='2')}}">
+						<text class="planbtn-text" bindtap='editpersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+
+					<!--删除的审核-->
+					<view class="plan-btn" wx:if="{{(roleId==1&&person.securityStatus=='3'&&person.flag=='3')||(roleId==2&&person.projectStatus=='3'&&person.flag=='3')}}">
+						<text class="planbtn-text" bindtap='deletepersonPass' data-personid="{{person.id}}">通过</text>
+					</view>
+					<view class="plan-btn" wx:if="{{(roleId==1&&person.securityStatus=='3'&&person.flag=='3')||(roleId==2&&person.projectStatus=='3'&&person.flag=='3')}}">
+						<text class="planbtn-text" bindtap='deletepersonReject' data-personid="{{person.id}}">驳回</text>
+					</view>
+					<!--拉黑 随时拉黑-->
+					<view class="plan-btn" wx:if="{{roleId!=4}}">
+						<text class="planbtn-text" bindtap='personBlock' data-personid="{{person.id}}">拉黑</text>
+					</view>
+					<!--通过发证-->
+					<view>
+						<view class="plan-btn" wx:if="{{roleId==1&&person.securityStatus=='5'&&(person.workLicensePath==''||person.workLicensePath==null)}}">
+							<text class="planbtn-text" bindtap='sendFile' data-personid="{{person.id}}">发证</text>
+						</view>
+					</view>
+					<view>
+						<!--有上岗证未拉黑-->
+						<view class="plan-btn" wx:if="{{roleId==3&&(person.workLicensePath!=null&&person.workLicensePath!='')}}">
+							<text class="planbtn-text" bindtap='orderClass' data-personid="{{person.id}}">排班</text>
+						</view>
+						<!-- <view class="plan-btn">
+							<text class="planbtn-text" bindtap='changeClass' data-personid="{{person.id}}">调班</text>
+						</view> -->
+					</view>
+					<view>
+					</view>
+				</view>
+				<!--审核状态-->
+				<!-- 1  -->
+				<view class="table-status" wx:if="{{roleId==1}}">
+					<text wx:if="{{person.securityStatus=='1'}}">未提交</text>
+					<text wx:if="{{person.securityStatus=='2'}}">已提交</text>
+					<text wx:if="{{person.securityStatus=='3'}}">待审核</text>
+					<text wx:if="{{person.securityStatus=='4'}}">审核中</text>
+					<text wx:if="{{person.securityStatus=='5'}}">已通过</text>
+					<text wx:if="{{person.securityStatus=='6'}}">驳回</text>
+					<text wx:if="{{person.securityStatus=='7'}}">拉黑</text>
+				</view>
+				<view class="table-status" wx:if="{{roleId==2}}">
+					<text wx:if="{{person.projectStatus=='1'}}">未提交</text>
+					<text wx:if="{{person.projectStatus=='2'}}">已提交</text>
+					<text wx:if="{{person.projectStatus=='3'}}">待审核</text>
+					<text wx:if="{{person.projectStatus=='4'}}">审核中</text>
+					<text wx:if="{{person.projectStatus=='5'}}">已通过</text>
+					<text wx:if="{{person.projectStatus=='6'}}">驳回</text>
+					<text wx:if="{{person.projectStatus=='7'}}">拉黑</text>
+				</view>
+				<view class="table-status" wx:if="{{roleId==3}}">
+					<text wx:if="{{person.outerStatus=='1'}}">未提交</text>
+					<text wx:if="{{person.outerStatus=='2'}}">已提交</text>
+					<text wx:if="{{person.outerStatus=='3'}}">待审核</text>
+					<text wx:if="{{person.outerStatus=='4'}}">审核中</text>
+					<text wx:if="{{person.outerStatus=='5'}}">已通过</text>
+					<text wx:if="{{person.outerStatus=='6'}}">驳回</text>
+					<text wx:if="{{person.outerStatus=='7'}}">拉黑</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!--添加按钮 3-->
+	<view class='deleteContainer' wx:if="{{roleId==3}}">
+		<image class='deleteImg' bind:tap="addPerson" src='/image/icon/add.png'></image>
+	</view>
+	<!--填写排班的弹框-->
+	<modal id="modal" hidden="{{hiddenmodalput}}" title="填写排班" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm" data-personid="{{person.id}}">
+		<view class="user-info">
+			<text class="user-info-text">所属项目部</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{serviceDepartment[index1].id}}" range="{{serviceDepartment}}" range-key="{{'name'}}" data-selecthx="{{serviceDepartment[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{serviceDepartment[index1].name}}" placeholder="请选择所属项目部" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">施工车站</text>
+			<picker class="user-picker" bindchange="bindPickerChange4" value="{{serviceStations[index2].id}}" range="{{serviceStations}}" range-key="{{'name'}}" data-selecthx="{{serviceStations[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{serviceStations[index2].name}}" placeholder="请选择所属施工车站" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">施工项目</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="project" placeholder-class="placeholder" placeholder="请输入施工项目" />
+		</view>
+		<view class="section">
+			<view class="section__title">施工开始时间</view>
+			<picker mode="date" value="{{date}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange">
+				<view class="picker">
+					当前选择: {{date}}
+				</view>
+			</picker>
+		</view>
+		<view class="section">
+			<view class="section__title">施工结束时间</view>
+			<picker mode="date" value="{{enddate}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange1">
+				<view class="picker">
+					当前选择: {{enddate}}
+				</view>
+			</picker>
+		</view>
+	</modal>
+	<!--调班弹框-->
+	<modal id="modal" hidden="{{hiddenmodalput1}}" title="填写调班" confirm-text="提交" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1" data-personid="{{person.id}}">
+		<view class="user-info">
+			<text class="user-info-text">所属项目部</text>
+			<picker class="user-picker" bindchange="bindPickerChange3" value="{{serviceDepartment[index1].id}}" range="{{serviceDepartment}}" range-key="{{'name'}}" data-selecthx="{{serviceDepartment[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{serviceDepartment[index1].name}}" placeholder="请选择所属项目部" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text class="user-info-text">施工车站</text>
+			<picker class="user-picker" bindchange="bindPickerChange4" value="{{serviceStations[index2].id}}" range="{{serviceStations}}" range-key="{{'name'}}" data-selecthx="{{serviceStations[index1].name}}">
+				<view class="user-picker1">
+					<input disabled="true" bindinput="userLearnInput" class="user-input" placeholder-class="placeholder" value="{{serviceStations[index2].name}}" placeholder="请选择所属施工车站" />
+				</view>
+			</picker>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">施工项目</text>
+			<input class="user-input" value="{{project}}" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">调换的施工项目</text>
+			<input class="user-input" bindinput="bindKeyInput" data-type="editproject" placeholder-class="placeholder" placeholder="请输入调换的施工项目" />
+		</view>
+		<view class="section">
+			<view class="section__title">施工开始时间</view>
+			<picker mode="date" value="{{date}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange">
+				<view class="picker">
+					当前选择: {{date}}
+				</view>
+			</picker>
+		</view>
+		<view class="section">
+			<view class="section__title">施工结束时间</view>
+			<picker mode="date" value="{{enddate}}" start="2020/01/01" end="2120/12/29" bindchange="bindDateChange1">
+				<view class="picker">
+					当前选择: {{enddate}}
+				</view>
+			</picker>
+		</view>
+	</modal>
+</view>

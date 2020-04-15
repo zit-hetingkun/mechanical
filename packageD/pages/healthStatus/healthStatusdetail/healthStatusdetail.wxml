@@ -1,0 +1,65 @@
+<!--pages/electromechanical/healthStatus/healthStatusdetail/healthStatusdetail.wxml-->
+<view>
+	<view class="user">
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+			<input class="user-input" value="{{name}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">性别</text>
+			<input class="user-input" value="{{gender}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">年龄</text>
+			<input class="user-input" value="{{age}}" placeholder-class="placeholder" />
+		</view>
+		<view class="page-section">
+			<view class="weui-cells__title">证件号</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_input">
+					<input class="user-input" value="{{idNum}}" placeholder-class="placeholder" />
+				</view>
+			</view>
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">所属公司</text>
+			<input class="user-input" value="{{company}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">身体状况</text>
+			<input class="user-input" value="{{body}}" placeholder-class="placeholder" />
+		</view>
+
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">不适症状</text>
+			<input class="user-input" value="{{symptom}}" placeholder-class="placeholder" />
+		</view>
+
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">现居住小区是否有确诊病例</text>
+			<input class="user-input" value="{{isConfirm}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">两周内是否有湖北地区或人员接触史</text>
+			<input class="user-input" value="{{isTouch}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 20rpx;" class="user-info-text">是否就医</text>
+			<input class="user-input" value="{{isDoctor}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 10rpx;" class="user-info-text">就医诊断结果</text>
+			<input class="user-input" value="{{result}}" placeholder-class="placeholder" />
+		</view>
+		<view class="user-info">
+			<text style="letter-spacing: 5rpx;" class="user-info-text">附件</text>
+			<image style="width:500px;height:100px" src="{{provePath}}"></image>
+		</view>
+		<!--按钮控制 进行权限判断-->
+		<view class="title-bottom">
+			<view class="plan-btn">
+				<text class="planbtn-text" bindtap='editPerson'>编辑</text>
+			</view>
+		</view>
+	</view>
+</view>

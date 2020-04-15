@@ -1,0 +1,102 @@
+<!--pages/securityPerson/personage/personagedetail.wxml-->
+<view>
+  <view class="user">
+    <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">分公司</text>
+      <input class="user-input"  value="{{operatingBranchConpany}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 10rpx;" class="user-info-text">安保公司</text>
+      <input class="user-input"  value="{{securityCompany}}"  placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">线别</text>
+      <input class="user-input"  value="{{line}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 10rpx;" class="user-info-text">站区/中心</text>
+      <input class="user-input"  value="{{stationArea}}"  placeholder-class="placeholder" />
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">车站</text>
+      <input class="user-input" value="{{station}}" placeholder-class="placeholder" />
+    </view>
+     <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">姓名</text>
+      <input class="user-input" value="{{userName}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">性别</text>
+      <input class="user-input" value="{{gender}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">证件号</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="user-input" value="{{idNum}}"  placeholder-class="placeholder"/>
+        </view>
+      </view>
+  </view>
+   <view class="user-info">
+      <text style="letter-spacing: 10rpx;" class="user-info-text">资格证件号</text>
+      <input class="user-input"  value="{{qualificationNo}}"  placeholder-class="placeholder"/>
+    </view>
+   <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text">住址/暂住地</text>
+      <input class="user-input"  value="{{address}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">籍贯</text>
+      <input class="user-input" value="{{nativePlace}}"  placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 10rpx;" class="user-info-text">联系方式</text>
+      <input class="user-input" value="{{phone}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text">在职状态</text>
+      <input class="user-input" value="{{workingState}}" placeholder-class="placeholder" />
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text">班组</text>
+      <input class="user-input" value="{{subwayGroup}}" placeholder-class="placeholder" />
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text">专业</text>
+      <input class="user-input" value="{{profession}}" placeholder-class="placeholder" />
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text"></text>
+      <image style="width:100px;height:100px" src="{{photoPath}}"></image>
+    </view>
+    <view class="user-info">
+      <text style="letter-spacing: 5rpx;" class="user-info-text">上岗证</text>
+      <image style="width:500px;height:100px" src="{{workLicensePath}}"></image>
+    </view>
+ <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">备注</text>
+      <input class="user-input"  value="{{remark}}" placeholder-class="placeholder"/>
+    </view>
+    <!--按钮控制 进行权限判断-->
+     <view class="user-info">
+      <text style="letter-spacing: 20rpx;" class="user-info-text">是否通过培训</text>
+      <input class="user-input"  value="{{isTrain}}" placeholder-class="placeholder"/>
+    </view>
+    <view class="title-bottom">
+      <!--修改的提交 对于已提交的状态会有一个修改的提交***-->
+      <!-- <view class="plan-btn" wx:if="{{roleId==4&&status==1||roleId==5&&status==1||roleId==4&&status==6||roleId==5&&status==6||roleId==4&&status==8||roleId==5&&status==8||roleId==4&&status==5||roleId==5&&status==5}}">
+        <text class="planbtn-text" bind:tap="addPerson">修改提交</text>
+      </view> -->
+      <!--删除提交-->
+       <!-- <view class="plan-btn" wx:if="{{roleId==4&&status==1||roleId==5&&status==1||roleId==4&&status==6||roleId==5&&status==6||roleId==4&&status==8||roleId==5&&status==8||roleId==4&&status==5||roleId==5&&status==5}}">
+        <text class="planbtn-text" bind:tap="deleteSubmit">删除提交</text>
+      </view> -->
+      <view class="plan-btn" wx:if="{{roleId==1||roleId==2||roleId==4&&status==1||roleId==5&&status==1||roleId==4&&status==6||roleId==5&&status==6||roleId==4&&status==8||roleId==5&&status==8||roleId==4&&status==5||roleId==5&&status==5}}">
+        <text class="planbtn-text" bindtap='editPerson'>编辑</text>
+      </view>
+      <view class="plan-btn" wx:if="{{roleId==1||roleId==2}}">
+        <text class="planbtn-text" bindtap='deletePerson'>删除</text>
+      </view>
+    </view>
+  </view>
+</view>

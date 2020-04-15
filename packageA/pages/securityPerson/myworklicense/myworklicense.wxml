@@ -1,0 +1,5 @@
+<!--pages/securityPerson/myworklicense/myworklicense.wxml-->
+<view>
+     <image src="{{image}}" class="mywork-img"></image>
+</view>
+  

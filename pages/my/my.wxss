@@ -1,0 +1,141 @@
+page{
+  background: #F8F8F8;
+}
+.titleBack{
+  width: 100%;
+  height: 206rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+/* .backImage{
+  width: 703rpx;
+  height: 206rpx;
+  z-index: -1;
+}
+.titlecontainer{
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+} */
+.headImg{
+  width: 136rpx;
+  height: 135rpx;
+  border-radius: 90rpx;
+}
+.nickName{
+  color: #130101;
+  font-size: 36rpx;
+  letter-spacing: 0.61rpx;
+  line-height: 48rpx;
+}
+.backContainer{
+  width: 100%;
+  background-color: white;
+}
+.myOrder{
+  padding-top: 48rpx;
+  width: 100%;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.order{
+  margin-left: 32rpx;
+  font-family: PingFangSC-Medium;
+  color: #3B3B3B;
+  font-size: 30rpx;
+  letter-spacing: 1.13px;
+}
+.lookOrder{
+  float: right;
+  font-size: 28rpx;
+  color: #A0A0A0;
+  letter-spacing: 1.05px;
+}
+.lookText{
+  margin-right: 7rpx;
+}
+.lookImg{
+  width: 21rpx;
+  height: 21rpx;
+  margin-right: 28rpx;
+}
+.unpaidContainer{
+  width: 703rpx;
+  height: 171rpx;
+  display: flex;
+  flex-direction: row;
+  margin-left: 31rpx;
+  border-top: 1px solid #E3E3E3;
+}
+.unpaid{
+  width: 50%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 38rpx;
+}
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+.unpaidImg{
+  width: 90rpx;
+  height: 90rpx;
+}
+.paidText{
+  color: #494949;
+  font-size: 30rpx;
+  letter-spacing: 1.93px;
+}
+.paidDetail{
+  color: #9E9E9E;
+  font-size: 24rpx;
+  letter-spacing: 1.54px;
+  margin-top: 14rpx;
+}
+.cpRecContainer{
+  height: 118rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 118rpx;
+  margin-left: 33rpx;
+}
+.cpRecContainer1{
+  height: 118rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 118rpx;
+  margin-left: 33rpx;
+  border-top: 1px solid #E3E3E3;
+}
+.cpRecImg{
+  width: 62rpx;
+  height: 62rpx;
+}
+.cpRecText{
+  color: #717171;
+  font-size: 32rpx;
+  letter-spacing: 2.06px;
+  margin-left: 19rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+  margin-left: 5rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
